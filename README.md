@@ -1,4 +1,21 @@
-## Predicting Chronic Pain and Schizophrenia from rsfMRI data using rDCM
+# Predicting Chronic Pain and Schizophrenia from rsfMRI data using rDCM
+
+### TLDR:
+- Idea is to analyse raw fMRI data from [SRPBS Multidisorder Dataset](https://bicr-resource.atr.jp/srpbsopen/) to understand the connectivity between different brain regions for different subjects.
+- Hypothesise that patients with schizophrenia (or chronic pain) will have different functional connectivity patterns.
+- [Dynamic Causal Models](http://www.scholarpedia.org/article/Dynamic_causal_modeling) are Bayesian State Space Models that allow us to model neuronal population dynamics with Ordinary Differential Equations, with learnable connectivity parameters. See link or our report for more details.
+- We can use (**unsupervised**) Maximum Likelihood Estimation (MLE) or Maximum A Posteriori Estimation (MAP) to infer parameters for each patient.
+- These parameters serve as feature embeddings, to be used for clustering or classification.
+
+So we:
+- Preprocess the fMRI data (slice-time correction, motion correction, General Linear Modelling for cofounds)
+- Perform Model Inversion (MLE) to infer connectivity parameters
+- Analyse and visualise connectivity estimates
+- Perform **dimensionality reduction** and train a **supervised** classifier (Support Vector Machine) to predict schizophrenic patients.
+
+**$\therefore$ we attain $\approx$ 70% accuracy on held out cross validation and test sets.**
+
+Check out the report [here](TN_Report_4.pdf)
 
 ### Translational Neuromodeling (ETH Zurich Spring'24)
 
